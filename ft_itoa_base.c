@@ -6,7 +6,7 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 12:08:03 by exam              #+#    #+#             */
-/*   Updated: 2015/12/02 11:48:03 by jschotte         ###   ########.fr       */
+/*   Updated: 2015/12/02 12:08:08 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_convert(int nb, char *str, int b)
 {
 	int i;
 	int j;
-
+	
 	j = 0;
 	if (nb < 0 && b == 10)
 	{
@@ -59,9 +59,9 @@ char	*ft_convert(int nb, char *str, int b)
 
 char	*ft_itoa_base(int value, int base)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int i;
+	int j;
+	char *str;
 
 	if (value == -2147483648)
 		return (ft_strdup("-2147483648"));
