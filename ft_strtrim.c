@@ -6,7 +6,7 @@
 /*   By: jschotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:30:42 by jschotte          #+#    #+#             */
-/*   Updated: 2015/11/27 14:03:55 by jschotte         ###   ########.fr       */
+/*   Updated: 2015/12/04 14:06:30 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ char			*ft_strtrim(char const *s)
 	int		max;
 	char	*str;
 
+	if (s == NULL)
+		return (NULL);
 	start = ft_firstspace((char*)s);
 	max = ft_lastspace((char*)s);
 	if (ft_countalpha((char*)s) == 0)
-		return ("");
+		return (ft_strnew(1));
 	if (max == 0 || start == 0 || max < start)
 	{
 		str = ft_strnew(ft_strlen(s));

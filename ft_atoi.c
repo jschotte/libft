@@ -6,7 +6,7 @@
 /*   By: jschotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 13:55:37 by jschotte          #+#    #+#             */
-/*   Updated: 2015/12/07 09:54:18 by jschotte         ###   ########.fr       */
+/*   Updated: 2016/01/13 13:12:42 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_atoi(const char *nptr)
 	res = 0;
 	sign = 1;
 	str = (unsigned char*)nptr;
-	while (str[i] && str[i] < 33)
+	while (str[i] < 33)
 		i++;
 	if (str[i] == '-')
 	{

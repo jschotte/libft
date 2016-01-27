@@ -6,14 +6,14 @@
 /*   By: jschotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 11:00:19 by exam              #+#    #+#             */
-/*   Updated: 2015/12/07 09:54:06 by jschotte         ###   ########.fr       */
+/*   Updated: 2016/01/07 13:48:58 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_convert(int nb, char *str)
+static	char	*ft_convert(int nb, char *str)
 {
 	int i;
 	int j;
@@ -39,7 +39,7 @@ char	*ft_convert(int nb, char *str)
 	return (str);
 }
 
-char	*ft_itoa(int nbr)
+char			*ft_itoa(int nbr)
 {
 	int		i;
 	int		j;

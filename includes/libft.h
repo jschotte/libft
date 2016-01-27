@@ -6,7 +6,7 @@
 /*   By: jschotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:27:04 by jschotte          #+#    #+#             */
-/*   Updated: 2015/12/02 11:42:32 by jschotte         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:32:03 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 
 # include <string.h>
+# define BUFF_SIZE 4096
+# define FD 10000
 
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
@@ -70,5 +72,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+int		get_next_line(int const fd, char **line);
+int		ft_abs(int nb);
 char	*ft_itoa_base(int value, int base);
 #endif
