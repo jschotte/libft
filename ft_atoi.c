@@ -23,7 +23,7 @@ int		ft_atoi(const char *nptr)
 	res = 0;
 	sign = 1;
 	str = (unsigned char*)nptr;
-	while (str[i] < 33)
+	while (str[i] && str[i] < 33)
 		i++;
 	if (str[i] == '-')
 	{
