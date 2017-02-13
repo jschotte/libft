@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_freejoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jschotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 13:55:37 by jschotte          #+#    #+#             */
-/*   Updated: 2015/11/30 09:58:24 by jschotte         ###   ########.fr       */
+/*   Created: 2016/02/20 21:42:16 by jschotte          #+#    #+#             */
+/*   Updated: 2016/03/15 08:57:09 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *nptr)
+char	*ft_freejoin(char *s1, char *s2)
 {
-	int				i;
-	int				res;
-	int				sign;
-	unsigned char	*str;
+	char	*s;
 
-	i = 0;
-	res = 0;
-	sign = 1;
-	str = (unsigned char*)nptr;
-	while (str[i] < 33)
-		i++;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (ft_isdigit(str[i]))
-	{
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
-	return (res * sign);
+	if (s1 == NULL && s2 == NULL)
+		return (NULL);
+	s = ft_strjoin(s1, s2);
+	if (s1)
+		ft_strdel(&s1);
+	if (s2)
+		ft_strdel(&s2);
+	return (s);
 }

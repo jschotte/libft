@@ -6,83 +6,78 @@
 /*   By: jschotte <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:31:21 by jschotte          #+#    #+#             */
-/*   Updated: 2016/01/13 14:16:16 by jschotte         ###   ########.fr       */
+/*   Updated: 2015/12/03 10:37:05 by jschotte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	count_w(char const *s, char c)
+static int		ft_countword(char *s, char c)
 {
-	size_t		i;
-	size_t		j;
+	int i;
+	int nb;
 
 	i = 0;
-	j = 0;
+	nb = 0;
 	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i])
+		if (s[i] == c)
 		{
-			j++;
-			i++;
-			while (s[i] != c && s[i])
+			while (s[i] && s[i] == c)
 				i++;
 		}
+		else
+		{
+			while (s[i] && s[i] != c)
+				i++;
+			nb++;
+		}
 	}
-	return (j);
+	return (nb);
 }
 
-static char		*add_w(size_t *i, char const *s, char c)
+static int		ft_lenw(char *s, char c, int j)
 {
-	size_t		size;
-	size_t		j;
-	char		*word;
+	int i;
 
-	size = *i;
-	j = 0;
-	while (s[size] && s[size] != c)
-		size++;
-	word = ft_strnew(size - *i);
-	if (word)
-	{
-		while (*i < size)
-		{
-			word[j] = s[*i];
-			j++;
-			*i += 1;
-		}
-		return (word);
-	}
-	return (0);
+	i = j;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+static	char	**ft_return(char **tab, int nb)
+{
+	tab[nb] = NULL;
+	return (tab);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char		**tab;
-	size_t		o;
-	size_t		*i;
-	size_t		j;
+	char	**tab;
+	int		i;
+	int		nbw;
+	int		j;
 
-	o = 0;
-	i = &o;
-	j = 0;
-	tab = NULL;
-	if (s)
-		tab = (char**)malloc(sizeof(char*) * (count_w(s, c) + 1));
-	if (tab)
+	if (s != NULL)
 	{
-		while (j < count_w(s, c))
+		nbw = ft_countword((char*)s, c);
+		tab = ft_memalloc(nbw + 1);
+		if (tab == NULL)
+			return (NULL);
+		j = 0;
+		i = 0;
+		while (i < nbw)
 		{
-			while (s[*i] == c)
-				*i += 1;
-			if (s[*i] != c && s[*i])
-				tab[j++] = add_w(i, s, c);
+			while (s[j] == c)
+				j++;
+			tab[i] = (char*)malloc(sizeof(s) * (ft_lenw((char*)s, c, j) + 1));
+			tab[i] = ft_strsub((char*)s, j, ft_lenw((char*)s, c, j) - j);
+			j = ft_lenw((char*)s, c, j) + 1;
+			i++;
 		}
-		tab[j] = 0;
-		return (tab);
+		return (ft_return(tab, nbw));
 	}
-	return (0);
+	return (NULL);
 }
